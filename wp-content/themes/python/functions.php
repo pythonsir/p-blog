@@ -35,7 +35,8 @@ if ( ! function_exists( 'python_setup' ) ) :
 
 
         register_nav_menus( array(
-            'menu-main' => esc_html__( 'Primary', 'python' ),
+            'menu-main' => esc_html__( 'hearder_menu', 'python' ),
+            'extra-menu' => esc_html__('extra_menu', 'python')
         ) );
 
         /*
@@ -87,6 +88,19 @@ if ( ! function_exists( 'python_setup' ) ) :
     }
 endif;
 add_action( 'after_setup_theme', 'python_setup' );
+
+
+add_filter('term_links-post_tag','formatTag');
+function formatTag($links){
+
+    $result= array();
+
+    foreach ($links as $link){
+        $result[]= '<v-chip>'.$link.'</v-chip>';
+    }
+    return $result;
+
+}
 
 
 /**

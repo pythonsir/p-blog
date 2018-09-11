@@ -79,9 +79,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
     height: 58px;
     display: block;
 }
-a {
+#app a {
     text-decoration: none;
-    color: #333 !important;
+    color: #333 ;
 }
 .fr {
     float: right;
@@ -198,8 +198,21 @@ a {
     float: left;
     color: #999;
 }
+
+.intro .tags{
+    float: right;
+    font-size: 12px;
+}
+.intro .tags a{
+    font-size: 12px;
+}
+
 .intro p {
     margin-right: 20px;
     font-size: 12px;
     margin-bottom: 0px;
+}
+
+.Header .Navigates.fl li.current-menu-item>a, .Header .Navigates.fl li:hover>a {
+    color: #4285f4 !important;
 }

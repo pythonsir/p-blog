@@ -173,7 +173,7 @@ get_header();
                     <v-card>
                         <div class="introduce">
                             <span></span>
-                            <h2>博主简介</h2><span></span>
+                            <h2>站长简介</h2><span></span>
                         </div>
                         <v-avatar
                             :size="80"
