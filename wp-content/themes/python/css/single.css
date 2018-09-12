@@ -1,0 +1,126 @@
+.v-content__wrap{
+    background-color: #fff;
+}
+.Header {
+    background: #FFF;
+    border-bottom: 1px solid #DDD;
+    height: 60px;
+    position: relative;
+    z-index: 21;
+    min-width: 1000px;
+    box-shadow: none;
+}
+.artical-title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: normal;
+    margin-top: 20px;
+}
+.artical-title-list {
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+.artical-title-list .is-vip-bg-6 {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+.artical-title-list .a-img, .artical-title-list .a-img img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.artical-title-list .a-img, .artical-title-list .a-img img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.artical-title-list .name {
+    color: #333;
+    cursor: pointer;
+    margin-right: 8px;
+    line-height: 35px;
+}
+.Left, .fl {
+    float: left;
+}
+.artical-title-list .comment {
+    font-size: 12px;
+    color: #bababa;
+    line-height: 35px;
+    cursor: pointer;
+}
+.Right, .fr {
+    float: right;
+}
+.artical-title-list .comment {
+    font-size: 12px;
+    color: #bababa !important;
+    line-height: 35px;
+    cursor: pointer;
+}
+.artical-title-list span {
+    width: 2px;
+    height: 2px;
+    background: #bababa;
+    vertical-align: middle;
+    margin: 16px 2px;
+}
+
+.artical-title-list .read {
+    font-size: 12px;
+    color: #bababa !important;
+    line-height: 35px;
+    margin: 0 4px 0 16px;
+    cursor: default;
+}
+.artical-title-list .time {
+    font-size: 12px;
+    color: #bababa !important;
+    line-height: 35px;
+    cursor: default;
+}
+
+.clear {
+    clear: both;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+.tab_name.original {
+    color: #ff7158 !important;
+    background: #f9d3cc;
+}
+.tab_name {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 14px;
+    padding: 0 10px;
+    line-height: 27px;
+    border-radius: 1px;
+}
+.main-content{
+     padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+.artical-copyright {
+    color: #9fa3a7 !important;
+    line-height: 1;
+    font-size: 12px;
+    margin-top: 26px;
+}
+.mt26 {
+    margin-top: 26px;
+}
+.for-tag a {
+    float: left;
+    padding: 0 15px;
+    line-height: 25px;
+    color: #666 !important;
+    background: #efefef;
+    font-size: 12px;
+    margin-right: 8px;
+    border-radius: 10px;
+}

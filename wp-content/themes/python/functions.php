@@ -90,16 +90,26 @@ endif;
 add_action( 'after_setup_theme', 'python_setup' );
 
 
-add_filter('term_links-post_tag','formatTag');
-function formatTag($links){
-
-    $result= array();
-
-    foreach ($links as $link){
-        $result[]= '<v-chip>'.$link.'</v-chip>';
-    }
-    return $result;
-
+function timeago( $ptime ) {
+    $ptime = strtotime($ptime);
+    $etime = time() - $ptime;
+    if($etime < 1) return '刚刚';
+    $interval = array (
+        12 * 30 * 24 * 60 * 60  =>  '年前 ('.date('Y-m-d', $ptime).')',
+        30 * 24 * 60 * 60       =>  '个月前 ('.date('m-d', $ptime).')',
+        7 * 24 * 60 * 60        =>  '周前 ('.date('m-d', $ptime).')',
+        24 * 60 * 60            =>  '天前',
+        60 * 60                 =>  '小时前',
+        60                      =>  '分钟前',
+        1                       =>  '秒前'
+    );
+    foreach ($interval as $secs => $str) {
+        $d = $etime / $secs;
+        if ($d >= 1) {
+            $r = round($d);
+            return $r . $str;
+        }
+    };
 }
 
 
@@ -116,7 +126,20 @@ function python_scripts() {
 
     wp_enqueue_script('vuetify.js','https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js',array('vue.js'),TZ_THEME_VERSION,true);
 
-    wp_enqueue_script('pmain.js',get_template_directory_uri().'/js/pmain.js',array('vue.js','vuetify.js'),TZ_THEME_VERSION,true);
+    if(is_front_page()){
+
+        wp_enqueue_script('pmain.js',get_template_directory_uri().'/js/pmain.js',array('vue.js','vuetify.js'),TZ_THEME_VERSION,true);
+
+    }
+
+    if(is_single()){
+
+        wp_enqueue_style('single',get_template_directory_uri().'/css/single.css',array('python-style'),TZ_THEME_VERSION);
+
+        wp_enqueue_script('article.js',get_template_directory_uri().'/js/article.js',array('vue.js','vuetify.js'),TZ_THEME_VERSION,true);
+    }
+
+
 
 
 }

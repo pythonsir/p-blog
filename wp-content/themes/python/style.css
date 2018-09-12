@@ -172,6 +172,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
     text-align: left;
     margin-bottom: 15px;
 }
+.elevation-5 .item h2 a{
+    text-decoration: underline !important;
+    color: #4285f4 !important;
+}
 
 .item .con {
     color: #666;
@@ -205,6 +209,11 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 .intro .tags a{
     font-size: 12px;
+    padding-right: 10px;
+    color: #999 !important;
+}
+.intro .tags a:hover{
+    color: #333 !important;
 }
 
 .intro p {
