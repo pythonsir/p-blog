@@ -112,6 +112,93 @@ function timeago( $ptime ) {
     };
 }
 
+/**
+ * 自定义评论专区
+ */
+function diy_comments($comment, $args, $depth){
+
+    $args['avatar_size'] = 38;
+
+    if ( 'div' == $args['style'] ) {
+        $tag = 'div';
+        $add_below = 'comment';
+    } else {
+        $tag = 'li';
+        $add_below = 'div-comment';
+    }
+
+?>
+
+    <<?php echo $tag; ?> <?php comment_class( $args['has_children'] ? 'parent' : '', $comment ); ?> id="comment-<?php comment_ID(); ?>"   <?php  if ($depth == '2'):  ?>
+
+        style="padding-left:50px;border-left:2px solid #d9d9d9;"
+
+    <?php
+    elseif ((int)$depth > 2):
+
+    ?>
+        style="padding-left:50px;border-top: 1px dashed #f0f0f0;"
+
+        <?php
+    endif;
+
+
+    ?>>
+    <?php if ( 'div' != $args['style'] ) : ?>
+        <div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+    <?php endif; ?>
+    <div class="comment-author vcard">
+        <div class="comment-image-warper">
+            <?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+        </div>
+        <div class="comment-info">
+            <div class="comment-info-1">
+                <?php
+                /* translators: %s: comment author link */
+                printf( '%s',
+                    sprintf( '<a class="fn">%s</a>', get_comment_author_link( $comment ) )
+                );
+                ?>
+            </div>
+
+            <div class="comment-meta commentmetadata"><a href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
+                    <?php
+                    /* translators: 1: comment date, 2: comment time */
+                    printf( '%1$s %2$s', get_comment_date( '', $comment ),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)' ), '&nbsp;&nbsp;', '' );
+                ?>
+            </div>
+
+        </div>
+
+    </div>
+    <?php if ( '0' == $comment->comment_approved ) : ?>
+        <em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ) ?></em>
+        <br />
+    <?php endif; ?>
+
+
+
+    <?php comment_text( $comment, array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+
+    <?php
+    comment_reply_link( array_merge( $args, array(
+        'add_below' => $add_below,
+        'depth'     => $depth,
+        'max_depth' => $args['max_depth'],
+        'before'    => '<div class="reply">',
+        'after'     => '</div>'
+    ) ) );
+    ?>
+
+    <?php if ( 'div' != $args['style'] ) : ?>
+        </div>
+    <?php endif; ?>
+
+
+<?php
+
+}
+
 
 /**
  * Enqueue scripts and styles.

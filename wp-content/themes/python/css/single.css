@@ -124,3 +124,21 @@
     margin-right: 8px;
     border-radius: 10px;
 }
+.article-content{
+
+}
+.article-content h2{
+    margin-bottom: 27px;
+}
+.article-content p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #2f2f2f !important;
+    margin-bottom: 27px;
+    word-break: break-word !important;
+}
+.article-content .wp-block-image{
+    margin-top: 27px;
+    margin-bottom: 27px;
+}

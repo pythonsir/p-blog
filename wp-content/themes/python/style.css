@@ -18,9 +18,20 @@ Use it to make something cool, have fun, and share what you've learned with othe
     display: none;
 }
 
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
+}
+
+*{
+    font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
 .home{
     background: #f7f8f9;
-    font-family: 'Microsoft YaHei',Arial;
     font-size: 14px;
     color: #333;
     text-align: left;
@@ -136,12 +147,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 }
 
-@font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(./fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
-}
+
 
 .material-icons {
     font-family: 'Material Icons';
@@ -158,6 +164,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
 }
+
 
 
 .skill{
@@ -224,4 +231,90 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 .Header .Navigates.fl li.current-menu-item>a, .Header .Navigates.fl li:hover>a {
     color: #4285f4 !important;
+}
+
+
+.normal-comment-list {
+    margin-top: 30px;
+}
+
+.normal-comment-list .top-title {
+    padding-bottom: 15px;
+    font-size: 17px;
+    font-weight: 700;
+    border-bottom: 1px solid #f0f0f0;
+}
+.normal-comment-list .top-title span {
+    vertical-align: middle;
+}
+.pull-right {
+    float: right!important;
+}
+ .normal-comment-list .top-title .pull-right a:hover {
+    color: #2f2f2f;
+}
+
+.normal-comment-list .top-title .pull-right a {
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #969696;
+    display: inline-block;
+}
+ul.comment-list{
+    list-style: none;
+}
+
+.comment-list{
+    padding-left: 0px;
+    padding-top: 15px;
+}
+.comment-author{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.comment-author img{
+    border-radius: 50%;
+
+}
+.comment-image-warper{
+    margin-right: 15px;
+}
+.comment-author .comment-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.comment-info-1 a{
+    font-size: 15px;
+    color: #333;
+}
+.comment-meta a{
+    font-size: 12px;
+    color: #969696 !important;
+}
+.comment-body{
+
+    padding: 15px 0 15px;
+}
+
+
+.comment-list ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.comment-list > li{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.comment-body p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-break: break-word!important;
 }

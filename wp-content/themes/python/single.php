@@ -31,7 +31,7 @@ get_header();
                     <div class="clear"></div>
                 </div>
                 <div class="artical-content-bak main-content editor-side-new">
-                    <div>
+                    <div class="article-content">
                         <?php the_content();?>
                     </div>
                 </div>
@@ -43,30 +43,34 @@ get_header();
                         <div class="clear"></div>
                     </div>
 
-
-
-
                     <?php
+
+
+                    if ( comments_open() || get_comments_number() ) {
+                        comments_template();
+                    }
 
                 endwhile;
             ?>
 
+            <v-fab-transition>
+                <v-btn
+                    transition="scale-transition"
+                    dark
+                    fab
+                    right
+                    fixed
+                    bottom
+                    color="red"
+                    @click="$vuetify.goTo('#app', options)"
+                    v-show="visiable"
+                >
+                    <v-icon>keyboard_arrow_up</v-icon>
+                </v-btn>
+            </v-fab-transition>
+
         </v-flex>
-        <v-fab-transition>
-        <v-btn
-            transition="scale-transition"
-            dark
-            fab
-            right
-            fixed
-            bottom
-            color="red"
-            @click="$vuetify.goTo('#app', options)"
-            v-show="visiable"
-        >
-            <v-icon>keyboard_arrow_up</v-icon>
-        </v-btn>
-        </v-fab-transition>
+
     </v-layout>
 
 
