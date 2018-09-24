@@ -10,9 +10,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="app">
-    <v-app id="inspire">
-        <?php get_template_part("template-parts/toolbars") ?>
-        <v-content>
+
 
 

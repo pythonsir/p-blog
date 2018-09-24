@@ -307,9 +307,9 @@ ul.comment-list{
     padding-left: 0px;
 }
 
-.comment-list > li{
-    padding-bottom: 15px;
-    border-bottom: 1px solid #f0f0f0;
+.comment-list  li{
+
+    border-bottom: 1px solid #f0f0f0 ;
 }
 .comment-body p{
     margin-top: 10px;
@@ -317,4 +317,58 @@ ul.comment-list{
     font-size: 14px;
     line-height: 1.5;
     word-break: break-word!important;
+}
+
+.comment-list .sub-comment-list {
+    margin-top: 20px;
+    padding: 5px 0 5px 20px;
+    border-left: 2px solid #d9d9d9;
+}
+.comment-list .sub-comment {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #f0f0f0;
+}
+.comment-list .sub-comment-list p {
+    margin: 0 0 5px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.comment-list .sub-tool-group {
+    font-size: 12px;
+    color: #969696;
+}
+
+.comment-list .sub-comment-list a,  .comment-list .sub-comment-list a:hover {
+    color: #3194d0 ;
+}
+.sub-comment-1-2 > a{
+    color: #3194d0 !important;
+}
+.sub-tool-group{
+    margin-top: 5px;
+}
+.fdseiw{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.fdseiw:hover{
+    cursor: pointer;
+}
+.sub-tool-group >a{
+    padding-left: 5px;
+
+}
+.sub-tool-group >a span{
+    font-size: 14px;
+    color: #969696;
+}
+.sub-tool-group >a i{
+    color: #969696 !important;
+}
+.reply >i,.reply >a{
+    color: #969696 !important;
 }
