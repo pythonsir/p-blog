@@ -8,10 +8,27 @@ new Vue({
             duration: 300,
             offset: 0,
             easing: 'easeInOutCubic',
+            comments:{
+                lists:[]
+            }
         }
     },
+    created(){
+        let _this = this;
+        $.ajax({
+            url:'/wp-comments.php',
+            type:'POST',
+            data:{'action':'getComments','id':post_id},
+            dataType:"json",
+            success:function (data) {
+                _this.comments.lists = data.reverse();
+            },
+            error:function () {
+                
+            }
+        })
+    },
     computed:{
-
         target () {
             const value = this[this.type]
             if (!isNaN(value)) return Number(value)
@@ -43,6 +60,17 @@ new Vue({
         },
         onScroll:function() {
             document.documentElement.scrollTop = "0px";
+        },
+        hiddenComm:function (index) {
+
+            let comm = this.comments.lists[index];
+
+            comm.children_flag = false;
+        },
+        viewComm:function (index) {
+            let comm = this.comments.lists[index];
+
+            comm.children_flag = true;
         }
     }
 

@@ -36,7 +36,7 @@ if ( post_password_required() ) {
 				<?php
 				wp_list_comments( array(
 					'callback'       => 'diy_comments',
-				) );
+					) );
 				?>
 			</ul><!-- .comment-list -->
 

@@ -129,21 +129,7 @@ function diy_comments($comment, $args, $depth){
 
 ?>
 
-    <<?php echo $tag; ?> <?php comment_class( $args['has_children'] ? 'parent' : '', $comment ); ?> id="comment-<?php comment_ID(); ?>"   <?php  if ($depth == '2'):  ?>
-
-        style="padding-left:50px;border-left:2px solid #d9d9d9;"
-
-    <?php
-    elseif ((int)$depth > 2):
-
-    ?>
-        style="padding-left:50px;border-top: 1px dashed #f0f0f0;"
-
-        <?php
-    endif;
-
-
-    ?>>
+    <<?php echo $tag; ?> <?php comment_class( $args['has_children'] ? 'parent' : '', $comment ); ?> id="comment-<?php comment_ID(); ?>">
     <?php if ( 'div' != $args['style'] ) : ?>
         <div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
     <?php endif; ?>
@@ -207,6 +193,10 @@ function python_scripts() {
 
     wp_enqueue_style( 'python-style', get_stylesheet_uri() );
 
+    wp_enqueue_script('jquery.js',get_template_directory_uri().'/js/jquery-3.3.1.js',array(),TZ_THEME_VERSION,true);
+
+    wp_enqueue_style('font-awesome',get_template_directory_uri().'/font-awesome-4.7.0',array(),TZ_THEME_VERSION);
+
     wp_enqueue_style('vuetify-main','https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',array(),TZ_THEME_VERSION);
 
     wp_enqueue_script('vue.js','https://cdn.jsdelivr.net/npm/vue/dist/vue.js',array(),TZ_THEME_VERSION,true);
@@ -231,3 +221,8 @@ function python_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'python_scripts' );
+
+
+function test(){
+    echo "aaa";
+}
