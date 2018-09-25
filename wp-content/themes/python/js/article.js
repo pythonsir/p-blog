@@ -71,6 +71,9 @@ new Vue({
             let comm = this.comments.lists[index];
 
             comm.children_flag = true;
+        },
+        gotoLogin:function () {
+            window.location.href="http://localhost/wp-login.php?redirect_to=http://localhost/archives/20"
         }
     }
 
