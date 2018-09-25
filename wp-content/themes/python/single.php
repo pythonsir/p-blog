@@ -59,7 +59,61 @@ get_header();
 
                             <div id="comments" class="comments-area normal-comment-list">
                                 <div>
-                                    <div><form class="new-comment"><a class="avatar"><img src="//cdn2.jianshu.io/assets/default_avatar/avatar_default-78d4d1f68984cd6d4379508dd94b4210.png"></a> <div class="sign-container"><a href="/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-comment-form" class="btn btn-sign">登录</a> <span>后发表评论</span></div></form> <!----></div>
+                                    <div class="submitpl">
+                                        <v-avatar color="grey lighten-4" >
+
+                                            <?php
+                                                if(!is_user_logged_in()){
+
+                                                ?>
+                                                    <img src="<?= get_template_directory_uri() . '/images/avatar_default.png' ?>" alt="avatar">
+
+                                            <?php
+                                                }else{
+                                                    $current_user = wp_get_current_user();
+
+                                                  echo  $imageurl = get_avatar($current_user->user_email);
+
+
+                                                }
+
+                                            ?>
+
+
+                                        </v-avatar>
+
+
+                                            <?php  if(!is_user_logged_in()) {
+
+                                                ?>
+                                        <div class="submit-container">
+                                                <div class="login">
+                                                    <v-btn color="info" @click="gotoLogin">登录</v-btn><span> 后发表评论</span>
+                                                </div>
+                                        </div>
+                                            <?php
+                                            }else{
+
+                                                ?>
+
+                                                <textarea class="submit-container">
+
+                                                </textarea>
+                                                <div>
+                                                    <v-btn color="success">提交</v-btn>
+                                                    <v-btn color="success">取消</v-btn>
+                                                </div>
+
+
+                                            <?php
+
+                                            }
+
+                                            ?>
+
+
+
+                                    </div>
                                     <div>
                                         <div class="top-title"><span><?php
                                                 get_comment_count(the_ID()) ?>条评论</span></div>
