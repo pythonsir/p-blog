@@ -1,6 +1,14 @@
+let curWwwPath = window.document.location.href;
 
+let pathName = window.document.location.pathname;
 
-new Vue({
+let pos = curWwwPath.indexOf(pathName);
+
+let localhostPath = curWwwPath.substring(0, pos);
+
+let gotourl =localhostPath+"/wp-login.php?redirect_to="+localhostPath+"/archives/20";
+
+$vuetify = new Vue({
     el: '#app',
     data(){
         return {
@@ -10,7 +18,8 @@ new Vue({
             easing: 'easeInOutCubic',
             comments:{
                 lists:[]
-            }
+            },
+            page: 1
         }
     },
     created(){
@@ -73,7 +82,17 @@ new Vue({
             comm.children_flag = true;
         },
         gotoLogin:function () {
-            window.location.href="http://localhost/wp-login.php?redirect_to=http://localhost/archives/20"
+            window.location.href=gotourl;
+        },
+        replyComments:function ($vuetify) {
+
+            if (is_user_logged_in){
+
+                $vuetify.goTo('#content');
+
+            }else{
+                window.location.href=gotourl;
+            }
         }
     }
 
