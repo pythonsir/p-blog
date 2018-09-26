@@ -3,6 +3,9 @@ get_header();
 ?>
 <script>
     var post_id = <? the_ID();?>
+
+    var is_user_logged_in = <?= is_user_logged_in()? 'true':'false'; ?>
+
 </script>
 <div id="app">
     <v-app id="inspire">
@@ -27,11 +30,12 @@ get_header();
                                 <h1 class="artical-title"><? the_title() ?></h1>
                                 <div class="artical-title-list">
                                     <div class="is-vip-bg-6 fl">
-                                        <a class="a-img" target="_blank"><img class="is-vip-img is-vip-img-4"
+                                        <a class="a-img" target="_blank">
+                                            <img class="is-vip-img is-vip-img-4"
                                                                               data-uid="13709825"
                                                                               src="<?= get_template_directory_uri() . '/images/user.png' ?>"></a>
                                     </div>
-                                    <a href="http://blog.51cto.com/13719825" class="name fl"
+                                    <a href="" class="name fl"
                                        target="_blank">pythonsir</a>
                                     <a class="comment comment-num fr"><font class="comment_number">
                                             <?php
@@ -46,7 +50,7 @@ get_header();
                                         <?php the_content(); ?>
                                     </div>
                                 </div>
-                                <div class="artical-copyright mt26">©著作权归作者所有：来自颜色库博主 Pythonsir
+                                <div id="content" class="artical-copyright mt26">©著作权归作者所有：来自colorlib.cn Pythonsir
                                     的原创作品，如需转载，请注明出处，否则将追究法律责任
                                 </div>
                             </div>
@@ -59,14 +63,15 @@ get_header();
 
                             <div id="comments" class="comments-area normal-comment-list">
                                 <div>
-                                    <div class="submitpl">
+                                    <div class="submitpl" >
                                         <v-avatar color="grey lighten-4" >
 
                                             <?php
                                                 if(!is_user_logged_in()){
 
                                                 ?>
-                                                    <img src="<?= get_template_directory_uri() . '/images/avatar_default.png' ?>" alt="avatar">
+
+                                <img src="<?= get_template_directory_uri() . '/images/default_avatar.png' ?>" alt="avatar">
 
                                             <?php
                                                 }else{
@@ -88,7 +93,7 @@ get_header();
                                                 ?>
                                         <div class="submit-container">
                                                 <div class="login">
-                                                    <v-btn color="info" @click="gotoLogin">登录</v-btn><span> 后发表评论</span>
+                                                    <v-btn color="primary" @click="gotoLogin">登录</v-btn><span> 后发表评论</span>
                                                 </div>
                                         </div>
                                             <?php
@@ -96,14 +101,20 @@ get_header();
 
                                                 ?>
 
-                                                <textarea class="submit-container">
+                                                <div  class="submit-container-content">
+                                                    <span>正在回复 <a>张晓红</a></span>
+                                                    <div class="submit-container-content-1">
+                                                        <textarea ref="textarea">
 
-                                                </textarea>
-                                                <div>
-                                                    <v-btn color="success">提交</v-btn>
-                                                    <v-btn color="success">取消</v-btn>
+                                                        </textarea>
+                                                        <div>
+                                                            <v-btn color="primary" :large="true"><v-icon  >reply</v-icon>提交</v-btn>
+                                                            <v-btn outline color="indigo" :large="true"><v-icon  >clear</v-icon>清除</v-btn>
+
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-
 
                                             <?php
 
@@ -131,7 +142,10 @@ get_header();
                                                     </div>
                                                 </div>
                                                 <p>{{item.comment_content}}</p>
-                                                <div class="reply"><v-icon :small="true">chat_bubble_outline</v-icon><a >  回复</a></div>
+                                                <div class="reply" @click="replyComments($vuetify)">
+
+                                                    <v-icon :small="true">chat_bubble_outline</v-icon>
+                                                    <a>  回复</a></div>
                                                 <div class="fdseiw" @click="viewComm(index)" v-show="!item.children_flag" v-if="item.children.length > 0"><h4 >查看所有 {{item.children.length}} 条回复 </h4><v-icon>keyboard_arrow_up</v-icon></div>
                                                 <div class="fdseiw" @click="hiddenComm(index)" v-show="item.children_flag" v-if="item.children.length > 0"><h4>隐藏回复</h4><v-icon>keyboard_arrow_down</v-icon></div>
                                                 <div v-show="item.children_flag" v-if="item.children.length > 0" class="sub-comment-list">
@@ -145,7 +159,7 @@ get_header();
                                                         </div>
                                                         <div class="sub-tool-group">
                                                             <span>{{item_1.comment_date}}</span>
-                                                            <a class="javascript:;"><v-icon :small="true">chat_bubble_outline</v-icon>
+                                                            <a @click="replyComments($vuetify)" class="javascript:;"><v-icon :small="true">chat_bubble_outline</v-icon>
                                                                 <span>回复</span></a>
                                                         </div>
                                                     </div>
@@ -154,6 +168,15 @@ get_header();
                                         </li>
 
                                     </ul>
+
+                                    <div class="text-xs-center">
+                                        <v-pagination
+                                            v-model="page"
+                                            :length="4"
+                                            circle
+                                        ></v-pagination>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -173,7 +196,7 @@ get_header();
                                 right
                                 fixed
                                 bottom
-                                color="red"
+                                color="primary"
                                 @click="$vuetify.goTo('#app', options)"
                                 v-show="visiable"
                             >
