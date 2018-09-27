@@ -2983,6 +2983,9 @@ function wp_handle_comment_submission( $comment_data ) {
 	if ( isset( $comment_data['comment_post_ID'] ) ) {
 		$comment_post_ID = (int) $comment_data['comment_post_ID'];
 	}
+    if ( isset( $comment_data['comment_karma'] ) ) {
+        $comment_karma = (int) $comment_data['comment_karma'];
+    }
 	if ( isset( $comment_data['author'] ) && is_string( $comment_data['author'] ) ) {
 		$comment_author = trim( strip_tags( $comment_data['author'] ) );
 	}
@@ -3140,7 +3143,8 @@ function wp_handle_comment_submission( $comment_data ) {
 		'comment_content',
 		'comment_type',
 		'comment_parent',
-		'user_ID'
+		'user_ID',
+        'comment_karma'
 	);
 
 	$check_max_lengths = wp_check_comment_data_max_lengths( $commentdata );

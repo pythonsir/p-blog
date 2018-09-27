@@ -444,3 +444,8 @@ ul.comment-list{
     outline-style: none;
     padding: 15px 15px;
 }
+.comment-loading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
