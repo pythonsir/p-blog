@@ -76,7 +76,7 @@ function getLevel($parentId){
     $_comments = $wpdb->get_results( $wpdb->prepare( "
 
 SELECT
-	t.comment_ID,t.comment_author,t.comment_date,t.comment_content,t.user_id,p.comment_author as p_comment_author
+	t.comment_ID,t.comment_author,t.comment_date,t.comment_karma,t.comment_content,t.user_id,p.comment_author as p_comment_author
 FROM
 	$wpdb->comments t
 LEFT JOIN $wpdb->comments p ON t.comment_parent = p.comment_ID
@@ -101,11 +101,15 @@ ORDER BY t.comment_ID
     }
 
     return $result;
-
-
-
 }
 
+/**
+ * 添加评论
+ */
+function addComment(){
+
+    $comment = wp_handle_comment_submission( wp_unslash( $_POST ) );
+}
 
 switch ($action){
 
@@ -117,6 +121,9 @@ switch ($action){
             commentslist($post_id);
         }
 
+        break;
+    case 'addComment':
+         addComment();
         break;
     default:
         break;

@@ -39,7 +39,7 @@ get_header();
                                        target="_blank">pythonsir</a>
                                     <a class="comment comment-num fr"><font class="comment_number">
                                             <?php
-                                            get_comment_count(the_ID()) ?></font>人评论</a>
+                                           echo get_comments_number() ?></font>人评论</a>
                                     <span class="fr"></span>
                                     <a href="javascript:;" class="read fr">568人阅读</a>
                                     <a href="javascript:;" class="time fr">2018-09-11 12:01:07</a>
@@ -62,7 +62,17 @@ get_header();
 
 
                             <div id="comments" class="comments-area normal-comment-list">
-                                <div>
+
+                                <div class="comment-loading" v-show="!commentFlag">
+                                    <v-progress-circular
+                                        :size="50"
+                                        color="primary"
+                                        indeterminate
+                                    ></v-progress-circular>
+                                </div>
+
+
+                                <div v-show="commentFlag">
                                     <div class="submitpl" >
                                         <v-avatar color="grey lighten-4" >
 
@@ -102,14 +112,12 @@ get_header();
                                                 ?>
 
                                                 <div  class="submit-container-content">
-                                                    <span>正在回复 <a>张晓红</a></span>
+                                                    <span v-show="reply.flag">正在回复 <a>{{reply.reply_user}}</a></span>
                                                     <div class="submit-container-content-1">
-                                                        <textarea ref="textarea">
-
-                                                        </textarea>
+                                                        <textarea ref="textarea" v-model="reply.content"></textarea>
                                                         <div>
-                                                            <v-btn color="primary" :large="true"><v-icon  >reply</v-icon>提交</v-btn>
-                                                            <v-btn outline color="indigo" :large="true"><v-icon  >clear</v-icon>清除</v-btn>
+                                                            <v-btn @click="newComm" color="primary" :disabled="!btnflag" :large="true"><v-icon>reply</v-icon>提交</v-btn>
+                                                            <v-btn outline color="indigo" :large="true" @click="clearComm"><v-icon  >clear</v-icon>清除</v-btn>
 
                                                         </div>
                                                     </div>
@@ -126,8 +134,8 @@ get_header();
 
                                     </div>
                                     <div>
-                                        <div class="top-title"><span><?php
-                                                get_comment_count(the_ID()) ?>条评论</span></div>
+                                        <div class="top-title"><span><?=
+                                                get_comments_number() ?>条评论</span></div>
                                     </div>
                                     <ul class="comment-list">
                                         <li  v-for="(item, index) in comments.lists" :key="index" class="comment ">
@@ -141,8 +149,8 @@ get_header();
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <p>{{item.comment_content}}</p>
-                                                <div class="reply" @click="replyComments($vuetify)">
+                                                <p v-html="item.comment_content"></p>
+                                                <div class="reply" @click="replyComment_p0($vuetify,item)">
 
                                                     <v-icon :small="true">chat_bubble_outline</v-icon>
                                                     <a>  回复</a></div>
@@ -159,7 +167,7 @@ get_header();
                                                         </div>
                                                         <div class="sub-tool-group">
                                                             <span>{{item_1.comment_date}}</span>
-                                                            <a @click="replyComments($vuetify)" class="javascript:;"><v-icon :small="true">chat_bubble_outline</v-icon>
+                                                            <a @click="replyComments($vuetify,item_1,item)" class="javascript:;"><v-icon :small="true">chat_bubble_outline</v-icon>
                                                                 <span>回复</span></a>
                                                         </div>
                                                     </div>
@@ -169,7 +177,7 @@ get_header();
 
                                     </ul>
 
-                                    <div class="text-xs-center">
+                                    <div class="text-xs-center" v-cloak>
                                         <v-pagination
                                             v-model="page"
                                             :length="4"
