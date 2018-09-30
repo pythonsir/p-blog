@@ -156,7 +156,9 @@ get_header();
 
                                     </div>
                                     <div>
+
                                         <div class="top-title"><span>{{ total }}条评论</span></div>
+
 
                                     </div>
                                     <ul class="comment-list">

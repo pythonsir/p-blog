@@ -32,6 +32,7 @@ function commentslist($post_id){
         exit(500);
     }
 
+
     $total = $wpdb->get_row($wpdb ->prepare(" 
     select COUNT(t.comment_ID) as total  FROM
  $wpdb->comments t 
@@ -55,6 +56,7 @@ ORDER BY t.comment_ID DESC ",$post_id);
  ");
 
     $pagenums = ceil($count->total / $_REQUEST['pageSize']);
+
 
 
     $_comments = $wpdb->get_results( " 
@@ -83,7 +85,9 @@ FROM
 
     }
 
+
     $ret = array('page' => (int)$_REQUEST['page'],'total'=>$total->total,'pagenum'=>$pagenums,'lists'=>$result);
+
 
     echo json_encode($ret);
 

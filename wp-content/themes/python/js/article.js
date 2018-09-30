@@ -33,6 +33,7 @@ $vuetify = new Vue({
             total:0,
             snackbar:false,
             message:''
+
         }
     },
     created(){
@@ -93,7 +94,9 @@ $vuetify = new Vue({
                 success:function (data) {
                     _this.currpage = data.page;
                     _this.pagenum = data.pagenum;
+
                     _this.comments.lists = data.lists;
+
                     _this.commentFlag = true;
                     _this.total = data.total;
                 },
