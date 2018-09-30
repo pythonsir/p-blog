@@ -1,7 +1,17 @@
+let curWwwPath = window.document.location.href;
+
+let pathName = window.document.location.pathname;
+
+let pos = curWwwPath.indexOf(pathName);
+
+let localhostPath = curWwwPath.substring(0, pos);
+
 new Vue({
     el: '#app',
     data(){
         return {
+            page:1,
+            pageNum:1,
             skills:[
                 {
                     title:"职业",
@@ -18,6 +28,26 @@ new Vue({
                 }
             ]
         }
+    },
+    created:function () {
+        this.page = page1 == 0? 1: page1;
+        this.pageNum = pageNum;
+    },
+    methods:{
+        gotoNext:function () {
+            this.pageurl();
+        },
+        gotoPre:function () {
+            this.pageurl();
+        },
+        gopage:function () {
+            this.pageurl();
+        },
+        pageurl:function () {
+            window.location.href=localhostPath+"/page/"+this.page;
+        }
+        
     }
+
 
 })
