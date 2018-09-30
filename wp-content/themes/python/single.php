@@ -60,6 +60,28 @@ get_header();
                                 <div class="clear"></div>
                             </div>
 
+<!--                          分页start  -->
+
+    <?php
+
+                            the_post_navigation( array(
+                                'next_text' =>
+                                    '<span class="post-title">%title</span>'.
+                                    '<v-btn color="primary" icon small dark>
+              <v-icon>chevron_right</v-icon>
+            </v-btn>' ,
+
+                                'prev_text' =>
+                                    '<v-btn color="primary" icon small dark>
+              <v-icon>chevron_left</v-icon>
+            </v-btn>'.'<span class="post-title">%title</span>'
+                            ) );
+
+                            ?>
+
+
+<!--                            分页end-->
+
 
                             <div id="comments" class="comments-area normal-comment-list">
 

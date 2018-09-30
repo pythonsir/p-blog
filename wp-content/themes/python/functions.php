@@ -248,3 +248,14 @@ function set_post_views () {
     }
 }
 add_action('get_header', 'set_post_views');
+
+
+function diy_navigation_markup_template($template, $class ){
+
+    $html = '<nav class="navigation %1$s" role="navigation">
+	          <div class="nav-links">%3$s</div>
+	      </nav>';
+
+    return $html;
+}
+add_filter('navigation_markup_template','diy_navigation_markup_template');

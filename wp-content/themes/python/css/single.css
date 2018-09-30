@@ -142,3 +142,29 @@
     margin-top: 27px;
     margin-bottom: 27px;
 }
+.nav-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.navigation{
+    margin-top: 20px;
+}
+.nav-previous,.nav-next{
+    width: 50%;
+    flex: 1;
+}
+
+.nav-previous > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.nav-next > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
