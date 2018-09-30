@@ -12,11 +12,8 @@
                     <?=  get_the_excerpt();?>
                 </p>
                 <div class="intro">
-<!--                    <a class="jing" href="http://blog.51cto.com/artcommend" target="_blank">-->
-<!--                     -->
-<!--                    </a>-->
-                    <p class="">阅读&nbsp;<span class="read_num">1750</span></p>
-                    <p class="">评论&nbsp;<span class="comment_num">0</span></p>
+                    <p class="">阅读&nbsp;<span class="read_num"><? get_post_views(get_the_ID()) ?></span></p>
+                    <p class="">评论&nbsp;<span class="comment_num"><?= get_comments_number(get_the_ID())?></span></p>
                     <p class="">收藏&nbsp;<span class="collect_num">0</span></p>
                     <p class="">发布于&nbsp;<span class="collect_num"><?= timeago( get_gmt_from_date(get_the_time('Y-m-d G:i:s')) ); ?></span></p>
                     <p style="display:none;" class="admire_num_p">赞赏&nbsp;<span
