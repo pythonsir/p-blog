@@ -25,7 +25,7 @@ $vuetify = new Vue({
                 reply_user:'',
                 id:0,
                 karma:0,
-                content:""
+                content:''
             },
             currpage:1,
             pageSize:2,
@@ -66,7 +66,7 @@ $vuetify = new Vue({
 
         },
         btnflag:function () {
-            if(this.reply.content.trim() != "" ){
+            if(this.reply.content != undefined && this.reply.content.trim() != ""){
                 return true;
             }else {
                 return false;
