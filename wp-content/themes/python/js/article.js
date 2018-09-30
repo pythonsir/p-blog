@@ -27,24 +27,21 @@ $vuetify = new Vue({
                 karma:0,
                 content:""
             },
-            page: 1
+            currpage:1,
+            pageSize:2,
+            pagenum:0,
+            total:0
         }
     },
     created(){
-        let _this = this;
-        $.ajax({
-            url:'/wp-comments.php',
-            type:'POST',
-            data:{'action':'getComments','id':post_id},
-            dataType:"json",
-            success:function (data) {
-                _this.comments.lists = data.reverse();
-                _this.commentFlag = true;
-            },
-            error:function () {
+        this.getlist();
 
-            }
-        })
+    },
+    watch:{
+        currpage:function(newPage, oldPage){
+            this.commentFlag = false;
+            this.getlist();
+        }
     },
     computed:{
         target () {
@@ -80,6 +77,29 @@ $vuetify = new Vue({
         window.addEventListener('scroll', this.handleScroll)
     },
     methods:{
+        getlist:function () {
+            let _this = this;
+            $.ajax({
+                url:'/wp-comments.php',
+                type:'POST',
+                data:{'action':'getComments',
+                    'id':post_id,
+                    'page': _this.currpage,
+                    'pageSize': _this.pageSize
+                },
+                dataType:"json",
+                success:function (data) {
+                    _this.currpage = data.page;
+                    _this.pagenum = data.pagenum;
+                    _this.comments.lists = data.lists.reverse();
+                    _this.commentFlag = true;
+                    _this.total = data.total;
+                },
+                error:function () {
+                    _this.commentFlag = true;
+                }
+            })
+        },
         handleScroll:function(){
            this.scrollTop = document.documentElement.scrollTop;
         },
@@ -146,6 +166,12 @@ $vuetify = new Vue({
 
             }
         },
+        nextPage:function () {
+
+        },
+        rightPage:function () {
+
+        },
         newComm:function () {
 
 
@@ -168,8 +194,6 @@ $vuetify = new Vue({
                 error:function (data) {
                     
                 }
-                
-
             })
 
         }

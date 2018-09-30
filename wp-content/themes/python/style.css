@@ -449,3 +449,24 @@ ul.comment-list{
     flex-direction: row;
     justify-content: center;
 }
+.site-footer {
+    background: #262626;
+    color: #777;
+}
+#footer-bottom {
+    background: #222;
+    color: #999;
+    font-size: 0.923em;
+}
+#copyright{
+    text-align: center;
+}
+.ban{
+    text-align: center;
+    margin-top: 10px;
+}
+.ban a{
+    color: #999;
+    font-size: 0.923em;
+    text-decoration: none;
+}

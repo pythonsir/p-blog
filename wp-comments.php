@@ -26,17 +26,35 @@ $action = isset($_REQUEST['action']) ? $_REQUEST['action'] : 'login';
 function commentslist($post_id){
     global $wpdb;
 
-    $_comments = $wpdb->get_results( $wpdb->prepare( "
+    if (!(isset($_REQUEST['page']) && isset($_REQUEST['pageSize']))){
 
-SELECT
+        echo json_encode(array('ret' => 500,'message'=>"系统参数错误!"));
+        exit(500);
+    }
+
+    $where = $wpdb->prepare(" LEFT JOIN $wpdb->comments p ON t.comment_parent = p.comment_ID
+WHERE t.comment_post_ID = %d  and t.comment_parent = 0
+ORDER BY t.comment_ID  ",$post_id);
+
+    $page = $_REQUEST['page'] - 1;
+
+    $pageSize = $_REQUEST['pageSize'];
+
+
+    $count = $wpdb->get_row(" 
+    select COUNT(t.comment_ID) as total  FROM
+ $wpdb->comments t 
+ {$where}
+ ");
+
+    $pagenums = ceil($count->total / $_REQUEST['pageSize']);
+
+
+    $_comments = $wpdb->get_results( " 
+ SELECT
 	t.comment_ID,t.comment_author,t.comment_date,t.comment_parent,t.comment_content,t.user_id,p.comment_author as p_comment_author
 FROM
-	$wpdb->comments t
-LEFT JOIN $wpdb->comments p ON t.comment_parent = p.comment_ID
-WHERE t.comment_post_ID = %d  and t.comment_parent = 0
-ORDER BY t.comment_ID  
-
-", $post_id ) );
+ $wpdb->comments t {$where} limit {$page},{$pageSize}");
 
     $result = array();
 
@@ -60,7 +78,9 @@ ORDER BY t.comment_ID
 
     }
 
-    echo json_encode($result);
+    $ret = array('page' => (int)$_REQUEST['page'],'total'=>(int)$count->total,'pagenum'=>$pagenums,'lists'=>$result);
+
+    echo json_encode($ret);
 
 }
 

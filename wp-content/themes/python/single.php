@@ -37,11 +37,11 @@ get_header();
                                     </div>
                                     <a href="" class="name fl"
                                        target="_blank">pythonsir</a>
-                                    <a class="comment comment-num fr"><font class="comment_number">
+                                    <a class="comment comment-num fr" style="margin-left: 4px;"><font class="comment_number">
                                             <?php
                                            echo get_comments_number() ?></font>人评论</a>
                                     <span class="fr"></span>
-                                    <a href="javascript:;" class="read fr">568人阅读</a>
+                                    <a href="javascript:;" class="read fr"><?php get_post_views(get_the_ID())?>人阅读</a>
                                     <a href="javascript:;" class="time fr">2018-09-11 12:01:07</a>
                                     <div class="clear"></div>
                                 </div>
@@ -135,7 +135,7 @@ get_header();
                                     </div>
                                     <div>
                                         <div class="top-title"><span><?=
-                                                get_comments_number() ?>条评论</span></div>
+                                               get_comments_number() ?>条评论</span></div>
                                     </div>
                                     <ul class="comment-list">
                                         <li  v-for="(item, index) in comments.lists" :key="index" class="comment ">
@@ -177,12 +177,16 @@ get_header();
 
                                     </ul>
 
-                                    <div class="text-xs-center" v-cloak>
+                                    <div v-show="total > 0" class="text-xs-center" v-cloak>
                                         <v-pagination
-                                            v-model="page"
-                                            :length="4"
+                                            v-model="currpage"
+                                            :length="pagenum"
+                                            :total-visible="7"
                                             circle
                                         ></v-pagination>
+                                    </div>
+                                    <div v-show="total == 0">
+                                        <div style="text-align: center;">暂无评论!</div>
                                     </div>
 
                                 </div>
