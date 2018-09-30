@@ -166,12 +166,6 @@ $vuetify = new Vue({
 
             }
         },
-        nextPage:function () {
-
-        },
-        rightPage:function () {
-
-        },
         newComm:function () {
 
 
@@ -194,6 +188,7 @@ $vuetify = new Vue({
                 error:function (data) {
                     
                 }
+
             })
 
         }

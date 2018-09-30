@@ -157,7 +157,9 @@ get_header();
                                     </div>
                                     <div>
                                         <div class="top-title"><span><?=
+
                                                get_comments_number() ?>条评论</span></div>
+
                                     </div>
                                     <ul class="comment-list">
                                         <li  v-for="(item, index) in comments.lists" :key="index" class="comment ">
@@ -199,6 +201,7 @@ get_header();
 
                                     </ul>
 
+
                                     <div v-show="total > 0" class="text-xs-center" v-cloak>
                                         <v-pagination
                                             v-model="currpage"
@@ -210,6 +213,7 @@ get_header();
                                     <div v-show="total == 0">
                                         <div style="text-align: center;">暂无评论!</div>
                                     </div>
+
 
                                 </div>
                             </div>

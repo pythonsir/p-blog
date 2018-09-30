@@ -448,6 +448,7 @@ ul.comment-list{
     display: flex;
     flex-direction: row;
     justify-content: center;
+
 }
 .site-footer {
     background: #262626;
@@ -470,3 +471,4 @@ ul.comment-list{
     font-size: 0.923em;
     text-decoration: none;
 }
+
