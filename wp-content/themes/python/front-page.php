@@ -1,6 +1,16 @@
 <?php
 get_header();
 ?>
+<script>
+    var page1 = <?php
+        global $paged;
+       echo $paged?>;
+     var pageNum = <?php
+        global $wp_query;
+     echo $wp_query->max_num_pages;
+    ?>;
+
+</script>
 <div id="app">
     <v-app id="inspire">
         <?php get_template_part("template-parts/toolbars") ?>
@@ -21,6 +31,13 @@ get_header();
                         endif;
                         ?>
 
+                        <v-pagination
+                            v-model="page"
+                            :length="pageNum"
+                            v-on:next="gotoNext"
+                            v-on:previous="gotoPre"
+                            v-on:input="gopage"
+                        ></v-pagination>
 
                     </v-flex>
                     <v-flex md3>

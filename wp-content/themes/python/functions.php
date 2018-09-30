@@ -259,3 +259,4 @@ function diy_navigation_markup_template($template, $class ){
     return $html;
 }
 add_filter('navigation_markup_template','diy_navigation_markup_template');
+
