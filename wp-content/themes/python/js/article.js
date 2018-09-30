@@ -30,7 +30,9 @@ $vuetify = new Vue({
             currpage:1,
             pageSize:2,
             pagenum:0,
-            total:0
+            total:0,
+            snackbar:false,
+            message:''
         }
     },
     created(){
@@ -91,7 +93,7 @@ $vuetify = new Vue({
                 success:function (data) {
                     _this.currpage = data.page;
                     _this.pagenum = data.pagenum;
-                    _this.comments.lists = data.lists.reverse();
+                    _this.comments.lists = data.lists;
                     _this.commentFlag = true;
                     _this.total = data.total;
                 },
@@ -163,11 +165,9 @@ $vuetify = new Vue({
                 id:"",
                 karma:0,
                 content:""
-
             }
         },
         newComm:function () {
-
 
             let _this = this;
 
@@ -182,11 +182,25 @@ $vuetify = new Vue({
                     'comment':_this.reply.content
                 },
                 dataType:"json",
+                beforeSend:function () {
+                    _this.btnflag = false;
+                },
                 success:function (data) {
-
+                    console.log(data);
+                        if(data.ret == 500){
+                            _this.snackbar = true;
+                            _this.message = data.message;
+                        }else{
+                            _this.getlist()
+                        }
                 },
                 error:function (data) {
-                    
+                    _this.snackbar = true;
+                    _this.message = data.message;
+                },
+                complete:function () {
+                    _this.btnflag = true;
+                    _this.clearComm();
                 }
 
             })

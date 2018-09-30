@@ -156,9 +156,7 @@ get_header();
 
                                     </div>
                                     <div>
-                                        <div class="top-title"><span><?=
-
-                                               get_comments_number() ?>条评论</span></div>
+                                        <div class="top-title"><span>{{ total }}条评论</span></div>
 
                                     </div>
                                     <ul class="comment-list">
@@ -241,6 +239,16 @@ get_header();
                                 <v-icon>keyboard_arrow_up</v-icon>
                             </v-btn>
                         </v-fab-transition>
+
+                        <v-snackbar
+                            v-model="snackbar"
+
+                            :bottom="true"
+                        >
+                            {{message}}
+
+                        </v-snackbar>
+
 
                     </v-flex>
 
