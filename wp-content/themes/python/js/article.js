@@ -188,7 +188,9 @@ $vuetify = new Vue({
                 },
                 dataType:"json",
                 beforeSend:function () {
+
                     _this.reply.content = "";
+
                 },
                 success:function (data) {
                     console.log(data);
@@ -204,6 +206,7 @@ $vuetify = new Vue({
                     _this.message = data.message;
                 },
                 complete:function () {
+
                     _this.clearComm();
                 }
 
