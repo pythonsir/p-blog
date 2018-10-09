@@ -1,8 +1,11 @@
 <?php
 get_header();
+
+set_post_views ();
+
 ?>
 <script>
-    var post_id = <? the_ID();?>
+    var post_id = <?php the_ID();?>
 
     var is_user_logged_in = <?= is_user_logged_in()? 'true':'false'; ?>
 
@@ -56,28 +59,14 @@ get_header();
                             </div>
 
                             <div class="for-tag mt26">
-                                <? the_tags('', '', null); ?>
+                                <?php the_tags('', '', null); ?>
                                 <div class="clear"></div>
                             </div>
 
 <!--                          分页start  -->
 
-    <?php
-
-                            the_post_navigation( array(
-                                'next_text' =>
-                                    '<span class="post-title">%title</span>'.
-                                    '<v-btn color="primary" icon small dark>
-              <v-icon>chevron_right</v-icon>
-            </v-btn>' ,
-
-                                'prev_text' =>
-                                    '<v-btn color="primary" icon small dark>
-              <v-icon>chevron_left</v-icon>
-            </v-btn>'.'<span class="post-title">%title</span>'
-                            ) );
-
-                            ?>
+    <?php the_post_navigation( array('next_text' =>'<span class="post-title">%title</span><v-btn color="primary" icon small dark><v-icon>chevron_right</v-icon></v-btn>','prev_text' =>'<v-btn color="primary" icon small dark><v-icon>chevron_left</v-icon></v-btn><span class="post-title">%title</span>'
+                            ) ); ?>
 
 
 <!--                            分页end-->
@@ -138,7 +127,7 @@ get_header();
                                                     <div class="submit-container-content-1">
                                                         <textarea ref="textarea" v-model="reply.content"></textarea>
                                                         <div>
-                                                            <v-btn @click="newComm" color="primary" :disabled="!btnflag" :large="true"><v-icon>reply</v-icon>提交</v-btn>
+                                                            <v-btn ref="tj" @click="newComm" color="primary" :disabled="!btnflag" :large="true"><v-icon>reply</v-icon>提交</v-btn>
                                                             <v-btn outline color="indigo" :large="true" @click="clearComm"><v-icon  >clear</v-icon>清除</v-btn>
 
                                                         </div>

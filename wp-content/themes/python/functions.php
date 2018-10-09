@@ -195,13 +195,13 @@ function python_scripts() {
 
     wp_enqueue_script('jquery.js',get_template_directory_uri().'/js/jquery-3.3.1.js',array(),TZ_THEME_VERSION,true);
 
-    wp_enqueue_style('font-awesome',get_template_directory_uri().'/font-awesome-4.7.0',array(),TZ_THEME_VERSION);
+    wp_enqueue_style('font-awesome',get_template_directory_uri().'/font-awesome-4.7.0/css/font-awesome.css',array(),TZ_THEME_VERSION);
 
-    wp_enqueue_style('vuetify-main','https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css',array(),TZ_THEME_VERSION);
+    wp_enqueue_style('vuetify-main',get_template_directory_uri().'/css/vuetify.min.css',array(),TZ_THEME_VERSION);
 
-    wp_enqueue_script('vue.js','https://cdn.jsdelivr.net/npm/vue/dist/vue.js',array(),TZ_THEME_VERSION,true);
+    wp_enqueue_script('vue.js',get_template_directory_uri().'/js/vue.js',array(),TZ_THEME_VERSION,true);
 
-    wp_enqueue_script('vuetify.js','https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js',array('vue.js'),TZ_THEME_VERSION,true);
+    wp_enqueue_script('vuetify.js',get_template_directory_uri().'/js/vuetify.js',array('vue.js'),TZ_THEME_VERSION,true);
 
     if(is_front_page()){
 
@@ -213,7 +213,7 @@ function python_scripts() {
 
         wp_enqueue_style('single',get_template_directory_uri().'/css/single.css',array('python-style'),TZ_THEME_VERSION);
 
-        wp_enqueue_script('article.js',get_template_directory_uri().'/js/article.js',array('vue.js','vuetify.js'),TZ_THEME_VERSION,true);
+        wp_enqueue_script('article.js',get_template_directory_uri().'/js/article.js',array('vue.js','vuetify.js'),'0.0.2',true);
     }
 
 
@@ -247,16 +247,15 @@ function set_post_views () {
         }
     }
 }
-add_action('get_header', 'set_post_views');
 
 
 function diy_navigation_markup_template($template, $class ){
 
-    $html = '<nav class="navigation %1$s" role="navigation">
-	          <div class="nav-links">%3$s</div>
+    $html = '<nav class="navigation %1$s" role="navigation"><div class="nav-links">%3$s</div>
 	      </nav>';
 
     return $html;
 }
-add_filter('navigation_markup_template','diy_navigation_markup_template');
+add_filter('navigation_markup_template','diy_navigation_markup_template',10,2);
+
 

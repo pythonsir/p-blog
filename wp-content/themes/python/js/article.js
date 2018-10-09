@@ -28,7 +28,7 @@ $vuetify = new Vue({
                 content:''
             },
             currpage:1,
-            pageSize:2,
+            pageSize:15,
             pagenum:0,
             total:0,
             snackbar:false,
@@ -174,6 +174,8 @@ $vuetify = new Vue({
 
             let _this = this;
 
+            let content = _this.reply.content;
+
             $.ajax({
                 url:'/wp-comments.php',
                 type:'POST',
@@ -182,11 +184,13 @@ $vuetify = new Vue({
                     'comment_post_ID':post_id,
                     'comment_parent':_this.reply.id,
                     'comment_karma': _this.reply.karma,
-                    'comment':_this.reply.content
+                    'comment':content
                 },
                 dataType:"json",
                 beforeSend:function () {
-                    _this.btnflag = false;
+
+                    _this.reply.content = "";
+
                 },
                 success:function (data) {
                     console.log(data);
@@ -202,7 +206,7 @@ $vuetify = new Vue({
                     _this.message = data.message;
                 },
                 complete:function () {
-                    _this.btnflag = true;
+
                     _this.clearComm();
                 }
 
