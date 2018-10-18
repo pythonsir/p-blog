@@ -294,25 +294,22 @@ function set_post_views () {
 
 function diy_navigation_markup_template($template, $class ){
 
-    $html = '<nav class="navigation %1$s" role="navigation"><div class="nav-links">%3$s</div>
+    if(is_single()){
+        $template = '<nav class="navigation %1$s" role="navigation"><div class="nav-links">%3$s</div>
 	      </nav>';
+    }else{
+        $template = '<nav class="navigation %1$s" role="navigation"><div class="python-nav-links">%3$s</div>
+	      </nav>';
+    }
 
-    return $html;
+    return $template;
 }
 add_filter('navigation_markup_template','diy_navigation_markup_template',10,2);
 
+
+
 function sparkling_widgets_init() {
 
-    register_sidebar(
-        array(
-            'name'          => esc_html__( 'Sidebar', 'sparkling' ),
-            'id'            => 'sidebar-1',
-            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</aside>',
-            'before_title'  => '<h3 class="widget-title">',
-            'after_title'   => '</h3>',
-        )
-    );
 
 
 
