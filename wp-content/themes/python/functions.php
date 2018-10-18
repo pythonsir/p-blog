@@ -113,29 +113,6 @@ function timeago( $ptime ) {
 }
 
 /**
- * 文章正文图片添加样式
- * @param $class
- * @param $id
- * @param $align
- * @param $size
- * @return string
- */
-function addClassForContentImage($class, $id, $align, $size){
-
-    return $class.' contentimage';
-
-}
-
-add_filter('get_image_tag_class','addClassForContentImage',10,4);
-
-function setExcerptLength($number){
-    return 109;
-}
-add_filter('excerpt_length','setExcerptLength');
-
-
-
-/**
  * 自定义评论专区
  */
 function diy_comments($comment, $args, $depth){
@@ -209,29 +186,6 @@ function diy_comments($comment, $args, $depth){
 }
 
 
-function addBaiduTongji(){
-
-    ?>
-
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?1ff8aff003ac7d98207b0720810e79f2";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
-
-<?php
-
-
-}
-
-add_action("wp_head",'addBaiduTongji',9);
-
-
 /**
  * Enqueue scripts and styles.
  */
@@ -261,6 +215,9 @@ function python_scripts() {
 
         wp_enqueue_script('article.js',get_template_directory_uri().'/js/article.js',array('vue.js','vuetify.js'),'0.0.2',true);
     }
+
+
+
 
 }
 add_action( 'wp_enqueue_scripts', 'python_scripts' );
@@ -300,14 +257,5 @@ function diy_navigation_markup_template($template, $class ){
     return $html;
 }
 add_filter('navigation_markup_template','diy_navigation_markup_template',10,2);
-
-function sparkling_widgets_init() {
-
-
-
-
-}
-add_action( 'widgets_init', 'sparkling_widgets_init' );
-
 
 

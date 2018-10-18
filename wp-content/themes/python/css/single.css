@@ -89,8 +89,8 @@
     overflow: hidden;
 }
 .tab_name.original {
-    color: #fff !important;
-    background: #37BC9B;
+    color: #ff7158 !important;
+    background: #f9d3cc;
 }
 .tab_name {
     display: inline-block;
@@ -135,31 +135,13 @@
     font-weight: 400;
     line-height: 1.7;
     color: #2f2f2f !important;
-    margin-bottom: 10px;
+    margin-bottom: 27px;
     word-break: break-word !important;
 }
-.article-content hr{
-    margin-bottom: 10px;
-}
-.contentimage{
-    width: 100% !important;
-    height: auto;
-}
-
 .article-content .wp-block-image{
     margin-top: 27px;
     margin-bottom: 27px;
 }
-
-.article-content ol{
-    margin-bottom: 27px;
-}
-
-.article-content a{
-    color: #1976d2 !important;
-}
-
-
 .nav-links{
     display: flex;
     flex-direction: row;
