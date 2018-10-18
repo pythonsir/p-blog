@@ -28,9 +28,9 @@ set_post_views ();
 
                             <div class="artical-Left-blog">
                                 <div class="status">
-                                    <a class="tab_name original">原创</a>
+                                    <a class="tab_name original"><?= get_post_meta(get_the_ID(),'type',true); ?></a>
                                 </div>
-                                <h1 class="artical-title"><? the_title() ?></h1>
+                                <h1 class="artical-title"><?php the_title() ?></h1>
                                 <div class="artical-title-list">
                                     <div class="is-vip-bg-6 fl">
                                         <a class="a-img" target="_blank">
