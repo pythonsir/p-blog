@@ -1,0 +1,25 @@
+.warp_list{
+    margin: 10px 20px 0 2px;
+}
+
+.layui-fluid{
+    background-color: #ffffff;
+    margin-top: 25px;
+    padding-top: 25px;
+}
+input{
+    background-color: #ffffff !important;
+}
+.warp{
+    margin-top: 25px;
+}
+.warp_list .layui-form-label{
+
+    display: inline;
+    width:auto;
+
+
+}
+.warp_list .layui-input-block{
+    margin-left: 90px;
+}

@@ -55,12 +55,9 @@ get_header();
                                             <div slot="header">{{ item.title }}</div>
                                             <v-card>
                                                 <v-card-text class="grey lighten-3">
-
                                                     <a v-if="item.url != undefined" :href="item.url"
                                                        target="_blank">{{item.info}}</a>
-                                                    <a v-else href="javascript:void();">{{item.info}}</a>
-
-                                                </v-card-text>
+                                                    <a v-else href="javascript:void();">{{item.info}}</a></v-card-text>
                                             </v-card>
                                         </v-expansion-panel-content>
                                     </v-expansion-panel>

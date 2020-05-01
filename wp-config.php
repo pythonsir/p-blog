@@ -20,7 +20,7 @@
 
 // ** MySQL 设置 - 具体信息来自您正在使用的主机 ** //
 /** WordPress数据库的名称 */
-define('DB_NAME', 'pyblog');
+define('DB_NAME', 'thepaper');
 
 /** MySQL数据库用户名 */
 define('DB_USER', 'root');
@@ -76,7 +76,9 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
+
+define( 'JETPACK_DEV_DEBUG', true );
 
 /**
  * zh_CN本地化设置：启用ICP备案号显示
